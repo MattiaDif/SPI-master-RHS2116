@@ -14,4 +14,4 @@ The SPI has been validated for an FPGA architecture running at 100MHz, and it ha
 ### NOTES
 The current state of the work provides VHDL code. I'm planning to upload the Verilog version. 
 
-To contribute refers to the dev branch! Thanks and see you around! :)
+To contribute refers to the *dev* branch! Thanks and see you around! :)
