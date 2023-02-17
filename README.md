@@ -6,8 +6,10 @@ Info:
 - CPHA = 0
 
 For detailed information about the SPI requirements, refer to Intan RHS2116 documentation: [datasheet](https://intantech.com/downloads.html?tabSelect=Datasheets).
+<br />
 
-The SPI has been validated for an FPGA architecture running at 100MHz, and it has been optimized to match the chip specification and to allow SPI clock frequency customization. Since the SPI logic has been designed for RHS2116 chip, it works with clock polarity (CPOL) ans clock phase (CPHA) equal to 0.
+The SPI has been validated for an FPGA architecture running at 100MHz, and it has been optimized to match the chip specification and to allow SPI clock frequency customization. Since the SPI logic has been designed for RHS2116 chip, it works with clock polarity (CPOL) and clock phase (CPHA) equal to 0.
+<br />
 
 ### NOTES
 The current state of the work provides VHDL code. I'm planning to upload the Verilog version. 
