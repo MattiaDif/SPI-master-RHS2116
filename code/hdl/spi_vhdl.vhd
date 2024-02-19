@@ -1,6 +1,6 @@
 -- @title      SPI protocol specific for Intan RHS, multi MISO/MOSI
 -- @category   interface
--- @file       spi_cust_generic.vhd
+-- @file       spi_vhdl.vhd
 -- @author     Mattia Di Florio
 -- @date       10 aug 2022
 -- @version    0.1
@@ -21,7 +21,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 
-entity spi_cust_generic is
+entity spi_vhdl is
 
     generic ( CLK_FREQ    : natural := 100000000;                           -- main clk default value
               WORD_LENGTH : natural :=        32;                           -- length of data for TX and RX
@@ -53,9 +53,9 @@ entity spi_cust_generic is
 
          );
 
-end spi_cust_generic;
+end spi_vhdl;
 
-architecture Behavioral of spi_cust_generic is
+architecture Behavioral of spi_vhdl is
 
     constant TCSOFF      : natural := 10;                                                       -- to guarantee at least a CS off time of 100 ns
                                                                                                 -- N*clk --> if N = 10 and clk = 100MHz, CS off time is 100 ns
