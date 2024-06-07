@@ -1,0 +1,182 @@
+$date
+	Fri Jun  7 16:40:23 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module spi_verilog_tb $end
+$var wire 1 ! cs $end
+$var wire 1 " data_out_v $end
+$var wire 1 # mosi_1 $end
+$var wire 1 $ mosi_2 $end
+$var wire 1 % ready_out $end
+$var wire 1 & sclk $end
+$var wire 32 ' data_out_2 [31:0] $end
+$var wire 32 ( data_out_1 [31:0] $end
+$var reg 1 ) clk $end
+$var reg 32 * data_in_1 [31:0] $end
+$var reg 32 + data_in_2 [31:0] $end
+$var reg 1 , data_in_v $end
+$var reg 1 - miso_1 $end
+$var reg 1 . miso_2 $end
+$var reg 1 / reset $end
+$var integer 32 0 x [31:0] $end
+$scope module spi_verilog_inst $end
+$var wire 1 ) clk $end
+$var wire 1 ! cs $end
+$var wire 32 1 data_in_1 [31:0] $end
+$var wire 32 2 data_in_2 [31:0] $end
+$var wire 1 , data_in_v $end
+$var wire 1 " data_out_v $end
+$var wire 1 - miso_1 $end
+$var wire 1 . miso_2 $end
+$var wire 1 # mosi_1 $end
+$var wire 1 $ mosi_2 $end
+$var wire 1 % ready_out $end
+$var wire 1 / reset $end
+$var wire 1 & sclk $end
+$var reg 1 3 clk_controller $end
+$var reg 1 4 clk_trig $end
+$var reg 32 5 data_out_1 [31:0] $end
+$var reg 32 6 data_out_2 [31:0] $end
+$var integer 32 7 clk_inc [31:0] $end
+$scope begin clk_generation $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx 7
+bx 6
+bx 5
+x4
+x3
+bx 2
+bx 1
+b0 0
+1/
+x.
+x-
+x,
+bx +
+bx *
+0)
+bx (
+bx '
+x&
+z%
+z$
+z#
+z"
+z!
+$end
+#5000
+b0 7
+0&
+04
+03
+1)
+#10000
+0)
+#15000
+1)
+#20000
+0)
+#25000
+1)
+#30000
+0)
+0/
+#35000
+1&
+14
+b1 7
+b1 0
+1)
+#40000
+0)
+#45000
+0&
+04
+13
+b10 7
+b10 0
+1)
+#50000
+0)
+#55000
+b11 7
+b11 0
+1)
+#60000
+0)
+#65000
+1&
+14
+03
+b0 7
+b100 0
+1)
+#70000
+0)
+#75000
+b1 7
+b101 0
+1)
+#80000
+0)
+#85000
+0&
+04
+13
+b10 7
+b110 0
+1)
+#90000
+0)
+#95000
+b11 7
+b111 0
+1)
+#100000
+0)
+#105000
+1&
+14
+03
+b0 7
+b1000 0
+1)
+#110000
+0)
+#115000
+b1 7
+b1001 0
+1)
+#120000
+0)
+#125000
+0&
+04
+13
+b10 7
+b1010 0
+1)
+#130000
+0)
+#135000
+b11 7
+b1011 0
+1)
+#140000
+0)
+#145000
+1&
+14
+03
+b0 7
+1)
