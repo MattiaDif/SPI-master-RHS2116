@@ -1,5 +1,5 @@
 -- @title      SPI protocol specific for Intan RHS, testbench
--- @file       spi_cust_generic_tb.vhd
+-- @file       spi_vhdl_tb.vhd
 -- @author     Mattia Di Florio
 -- @date       11 aug 2022
 -- @version    0.1
@@ -65,7 +65,7 @@ architecture bench of spi_vhdl_tb is
     constant WORD_LENGTH : natural :=        32;
     constant SPICLK_FREQ : natural :=  25000000;
 
-    constant COUNTER_MAX : natural := 1;
+    constant COUNTER_MAX : natural := 1;                                                        -- a data is sent to SPI module each time counter reaches COUNTER_MAX
     
 
     -- Ports
@@ -88,8 +88,8 @@ architecture bench of spi_vhdl_tb is
     signal data_out_2 : std_logic_vector(WORD_LENGTH - 1 downto 0) := (others => '0');
     signal data_out_v : std_logic;
 
-    signal data       : integer                        := 0;
-    signal counter    : integer range 0 to COUNTER_MAX := COUNTER_MAX;
+    signal data       : integer                        := 0;                                    -- input data 
+    signal counter    : integer range 0 to COUNTER_MAX := COUNTER_MAX;                          -- counter to simulate a module which send data to SPI module
 
 
 begin
@@ -124,7 +124,7 @@ begin
              );
 
 
-    clk_process : process   
+    clk_process : process   -- clock generation
     begin
         clk <= '1';
         wait for clk_period/2;
@@ -133,7 +133,7 @@ begin
     end process clk_process;
 
    
-    data_tx : process(clk)
+    data_tx : process(clk)  -- process to simulate input data to transmit via SPI
     begin
         if rising_edge(clk) then
             if counter < COUNTER_MAX then
@@ -158,9 +158,11 @@ begin
         end if;
     end process data_tx;
 
-    miso_1 <= mosi_1;   -- to simulate input data on miso line
-    miso_2 <= mosi_2;   -- to simulate input data on miso line
 
-    reset <= '1' after 0 ns, '0' after 10 ns;
+    -- this ensure to have always input data to retrieve on miso line 
+    miso_1 <= mosi_1;   -- to simulate input data on miso line 1
+    miso_2 <= mosi_2;   -- to simulate input data on miso line 2
+
+    reset <= '1' after 0 ns, '0' after 30 ns;
 
 end;
