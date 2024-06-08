@@ -1,6 +1,6 @@
 -- @title      SPI protocol specific for Intan RHS, multi MISO/MOSI
 -- @category   interface
--- @file       spi_cust_generic.vhd
+-- @file       spi_vhdl.vhd
 -- @author     Mattia Di Florio
 -- @date       10 aug 2022
 -- @version    0.1
@@ -21,7 +21,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 
-entity spi_cust_generic is
+entity spi_vhdl is
 
     generic ( CLK_FREQ    : natural := 100000000;                           -- main clk default value
               WORD_LENGTH : natural :=        32;                           -- length of data for TX and RX
@@ -30,7 +30,7 @@ entity spi_cust_generic is
 
 
     port ( clk        : in  std_logic;                                      -- main clock
-           reset      : in  std_logic;                                      -- reset button
+           reset      : in  std_logic;                                      -- reset signal
            cs         : out std_logic;                                      -- chip select
 
            mosi_1     : out std_logic;                                      -- master out slave in output 1
@@ -38,10 +38,10 @@ entity spi_cust_generic is
            mosi_2     : out std_logic;                                      -- master out slave in output 2 
            miso_2     : in  std_logic;                                      -- master in slave out input 2
 
-           sclk       : out std_logic;                                      -- SPI clock for communication
+           sclk       : out std_logic;                                      -- SPI clock
 
            -- interface
-           data_in_v  : in  std_logic;                                      -- data to transmit over mosi validity
+           data_in_v  : in  std_logic;                                      -- master in slave out input 1
            ready_out  : out std_logic;                                      -- ready to get new data to transmit
            data_out_v : out std_logic;                                      -- data received validity, new data available flag
 
@@ -53,9 +53,9 @@ entity spi_cust_generic is
 
          );
 
-end spi_cust_generic;
+end spi_vhdl;
 
-architecture Behavioral of spi_cust_generic is
+architecture Behavioral of spi_vhdl is
 
     constant TCSOFF      : natural := 10;                                                       -- to guarantee at least a CS off time of 100 ns
                                                                                                 -- N*clk --> if N = 10 and clk = 100MHz, CS off time is 100 ns
@@ -78,7 +78,7 @@ architecture Behavioral of spi_cust_generic is
     signal clk_trig       : std_logic;                                                          -- trigger sclk
     signal chip_sel       : std_logic := '1';                                                   -- chip select
 
-    signal busy_flag      : std_logic := '0';                                                   -- busy flag
+    signal busy_flag      : std_logic := '0';                                                   -- SPI module busy flag
     signal data_ready     : std_logic := '1';                                                   -- new data available flag
     
     signal shift_reg_tx_1 : std_logic_vector(WORD_LENGTH - 1 downto 0) := (others => '0');      -- shift register transmitter 
@@ -232,7 +232,7 @@ begin
 
 
     cs         <= chip_sel;                               -- output chip select
-    sclk       <= clk_trig when chip_sel = '0' else '0';  -- output SPI clock communication
+    sclk       <= clk_trig when chip_sel = '0' else '0';  -- output SPI clock 
     ready_out  <= not busy_flag;                          -- SPI ready for new operation
     data_out_v <= data_ready;                             -- new data available
 
