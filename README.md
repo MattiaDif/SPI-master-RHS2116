@@ -23,4 +23,4 @@ If you use this repo, please cite:
 "Di Florio, M. SPI-master-RHS2116 (Version 1.0.0) [Computer software]. https://github.com/MattiaDif/SPI-master-RHS2116"
 
 ## Notes
-To contribute refers to the *dev* branch! Thanks and see you around! :)
+To contribute refers to the *dev* branch!
